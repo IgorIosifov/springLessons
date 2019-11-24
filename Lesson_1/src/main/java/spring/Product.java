@@ -1,4 +1,4 @@
-package com.geekbrains.spring;
+package spring;
 
 import java.math.BigDecimal;
 
