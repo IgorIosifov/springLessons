@@ -1,4 +1,4 @@
-package com.geekbrains.spring;
+package spring;
 
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
