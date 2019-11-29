@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="10a1c5f1-c8b2-40f4-a0a7-d542cf80638b" name="Default Changelist" comment="" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="HTML File" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="importingSettings">
+      <MavenImportingSettings>
+        <option name="importAutomatically" value="true" />
+      </MavenImportingSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1RFdrxaP3WBqhRd9uUKoMHB47fH" />
+  <component name="PropertiesComponent">
+    <property name="DefaultHtmlFileTemplate" value="HTML File" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1569093302379" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app" />
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\resources\configs" />
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\java\com\flamexander\hibernate\oracle" />
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\resources\configs\oracle" />
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\resources\configs\inheritance.table_per_class" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.flamexander.hibenate.composed_key" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\resources\META-INF" />
+      <recent name="C:\Users\FlameXander\Desktop\Курсы Java\Sources\Spring 1\Lesson 3 (Hibernate)\hibernate-app\src\main\resources\configs" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.ManyToManyApp">
+    <configuration name="CrudApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flamexander.hibernate.crud.CrudApp" />
+      <module name="hibernate-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flamexander.hibernate.crud.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="MainSingle" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flamexander.hibernate.MainSingle" />
+      <module name="hibernate-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flamexander.hibernate.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ManyToManyApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flamexander.hibernate.many_to_many.ManyToManyApp" />
+      <module name="hibernate-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flamexander.hibernate.many_to_many.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OneToManyAndBackApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flamexander.hibernate.one_to_many_and_back.OneToManyAndBackApp" />
+      <module name="hibernate-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flamexander.hibernate.one_to_many_and_back.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="OneToOneApp" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.flamexander.hibernate.one_to_one.OneToOneApp" />
+      <module name="hibernate-app" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.flamexander.hibernate.one_to_one.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <list>
+      <item itemvalue="Application.CrudApp" />
+      <item itemvalue="Application.MainSingle" />
+      <item itemvalue="Application.OneToOneApp" />
+      <item itemvalue="Application.OneToManyAndBackApp" />
+      <item itemvalue="Application.ManyToManyApp" />
+    </list>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.ManyToManyApp" />
+        <item itemvalue="Application.OneToManyAndBackApp" />
+        <item itemvalue="Application.OneToOneApp" />
+        <item itemvalue="Application.CrudApp" />
+        <item itemvalue="Application.MainSingle" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="10a1c5f1-c8b2-40f4-a0a7-d542cf80638b" name="Default Changelist" comment="" />
+      <created>1567447523141</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1567447523141</updated>
+      <workItem from="1574234751901" duration="1712000" />
+      <workItem from="1574243745899" duration="7000" />
+      <workItem from="1574246288145" duration="7419000" />
+      <workItem from="1574588851654" duration="616000" />
+      <workItem from="1574690596958" duration="1390000" />
+      <workItem from="1574791366349" duration="5686000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>
