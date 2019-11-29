@@ -37,11 +37,49 @@ INSERT INTO books (title) VALUES
 ('Da Vinci Code'),
 ('Lord of the Ring');
 
+DROP TABLE IF EXISTS products CASCADE;
+CREATE TABLE products (id bigserial PRIMARY KEY, title VARCHAR(255), cost bigint);
+INSERT INTO products (title, cost) VALUES
+('Bread', 150 ),
+('Milk', 200),
+('Lemon', 50),
+('Vine', 500),
+('Water', 10);
+
+DROP TABLE IF EXISTS customers CASCADE;
+CREATE TABLE customers (id bigserial PRIMARY KEY, name VARCHAR(255));
+INSERT INTO customers (name) VALUES
+('Igor'),
+('Kate'),
+('Andrew');
+
+DROP TABLE IF EXISTS products_customers CASCADE;
+CREATE TABLE products_customers (product_id bigint, customer_id bigint, FOREIGN KEY (product_id) REFERENCES products (id), FOREIGN KEY (customer_id) REFERENCES customers (id));
+INSERT INTO products_customers (product_id, customer_id) VALUES
+(1, 1),
+(3, 1),
+(2, 2),
+(4, 2),
+(1, 2);
+
+DROP TABLE IF EXISTS customers_products CASCADE;
+CREATE TABLE customers_products (customer_id bigint, product_id bigint, FOREIGN KEY (customer_id) REFERENCES customers (id), FOREIGN KEY (product_id) REFERENCES products (id));
+INSERT INTO customers_products (customer_id, product_id) VALUES
+(1, 1),
+(1, 3),
+(2, 2),
+(2, 4),
+(2, 1);
+
+
+
 DROP TABLE IF EXISTS readers CASCADE;
 CREATE TABLE readers (id bigserial PRIMARY KEY, name VARCHAR(255));
 INSERT INTO readers (name) VALUES
 ('Alexander'),
 ('Bob');
+
+
 
 DROP TABLE IF EXISTS books_readers CASCADE;
 CREATE TABLE books_readers (book_id bigint, reader_id bigint, FOREIGN KEY (book_id) REFERENCES books (id), FOREIGN KEY (reader_id) REFERENCES readers (id));
