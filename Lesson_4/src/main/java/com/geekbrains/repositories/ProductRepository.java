@@ -1,9 +1,9 @@
 package com.geekbrains.repositories;
 
-import com.geekbrains.entities.Item;
+import com.geekbrains.entities.Product;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
 
-public interface ItemRepository extends JpaRepository<Item, Long>, JpaSpecificationExecutor<Item> {
+public interface ProductRepository extends JpaRepository<Product, Long>, JpaSpecificationExecutor<Product> {
 
 }

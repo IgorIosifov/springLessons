@@ -3,8 +3,8 @@ package com.geekbrains.entities;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "items")
-public class Item {
+@Table(name = "products")
+public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -13,8 +13,8 @@ public class Item {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "price")
-    private int price;
+    @Column(name = "cost")
+    private int cost;
 
     public Long getId() {
         return id;
@@ -32,19 +32,19 @@ public class Item {
         this.title = title;
     }
 
-    public int getPrice() {
-        return price;
+    public int getCost() {
+        return cost;
     }
 
-    public void setPrice(int price) {
-        this.price = price;
+    public void setCost(int price) {
+        this.cost = cost;
     }
 
-    public Item() {
+    public Product() {
     }
 
-    public Item(String title, int price) {
+    public Product(String title, int price) {
         this.title = title;
-        this.price = price;
+        this.cost = price;
     }
 }
