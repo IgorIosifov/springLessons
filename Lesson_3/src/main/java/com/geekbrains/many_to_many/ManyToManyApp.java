@@ -17,53 +17,81 @@ public class ManyToManyApp {
 
         Session session = null;
         try {
-            session = factory.getCurrentSession();
-            session.beginTransaction();
-            Customer customerFirst = session.get(Customer.class, 1L);
-            System.out.println("First customer is: " + customerFirst.getName());
-            System.out.println("Products: ");
-            for (Product pr : customerFirst.getProducts()) {
-                System.out.println(pr.getTitle());
-            }
+            session = factory.openSession();
+            getInfoAboutCustomer(session, 1L);
+            getInfoAboutCustomer(session, 2L);
+            getInfoAboutProduct(session, 1L);
+            getInfoAboutProduct(session, 2L);
+            
+            System.out.println(getAllCustomers(session)); // before delete customer from DB
+            deleteCustomerFromDB(session, 3L);
+            System.out.println(getAllCustomers(session)); // after delete customer from DB
 
-            Customer customerSecond = session.get(Customer.class, 2L);
-            System.out.println("Second customer is: " + customerSecond.getName());
-            System.out.println("Products: ");
-            for (Product pr : customerSecond.getProducts()) {
-                System.out.println(pr.getTitle());
-            }
+            System.out.println(getAllProducts(session)); // before delete product from DB
+            deleteProductFromDB(session, 5L);
+            System.out.println(getAllProducts(session)); // after delete product from DB
 
-            Product productFirst = session.get(Product.class, 1L);
-            System.out.println("First product is: " + productFirst.getTitle());
-            System.out.println("Customers: ");
-            for (Customer cst : productFirst.getCustomers()) {
-                System.out.println(cst.getName());
-            }
 
-            Product productSecond = session.get(Product.class, 2L);
-            System.out.println("Second product is: " + productSecond.getTitle());
-            System.out.println("Customers: ");
-            for (Customer cst : productSecond.getCustomers()) {
-                System.out.println(cst.getName());
-            }
-
-            List <Customer> allCostumers = session.createQuery("SELECT customer FROM Customer customer").getResultList();
-            System.out.println(allCostumers);
-            session.createQuery(Customer.deleteCustomerFromDB(3)).executeUpdate();
-            List <Customer> allCostumersAfterDelete = session.createQuery("SELECT customer FROM Customer customer").getResultList();
-            System.out.println(allCostumersAfterDelete);
-            List <Customer> allProducts= session.createQuery("SELECT product FROM Product product").getResultList();
-            System.out.println(allProducts);
-            session.createQuery(Product.deleteProductFromDB(5)).executeUpdate();
-            List <Customer> allProductsAfterDelete = session.createQuery("SELECT product FROM Product product").getResultList();
-            System.out.println(allProductsAfterDelete);
-            session.getTransaction().commit();
         } finally {
             factory.close();
             if (session != null) {
                 session.close();
             }
         }
+    }
+
+    private static void deleteProductFromDB(Session session, Long id) {
+        session.beginTransaction();
+        session.createQuery(Product.deleteProductFromDB(id)).executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    private static void deleteCustomerFromDB(Session session, Long id) {
+        session.beginTransaction();
+        session.createQuery(Customer.deleteCustomerFromDB(id)).executeUpdate();
+        session.getTransaction().commit();
+    }
+
+    private static List<Customer> getAllCustomers(Session session) {
+        session.beginTransaction();
+        try {
+            return (List<Customer>) session.createQuery("SELECT customer FROM Customer customer").getResultList();
+        } finally {
+            session.getTransaction().commit();
+        }
+    }
+
+    private static List<Product> getAllProducts(Session session) {
+        session.beginTransaction();
+        try {
+            return (List<Product>) session.createQuery("SELECT product FROM Product product").getResultList();
+        } finally {
+            session.getTransaction().commit();
+        }
+    }
+
+
+    private static void getInfoAboutProduct(Session session, Long id) {
+        session.beginTransaction();
+        Product productFirst = session.get(Product.class, id);
+        System.out.println("Title of " + id + " product is: " + productFirst.getTitle());
+        System.out.println("Customers: ");
+        for (Customer cst : productFirst.getCustomers()) {
+            System.out.println(cst.getName());
+        }
+        session.getTransaction().commit();
+    }
+
+    private static void getInfoAboutCustomer(Session session, Long id) {
+
+        session.beginTransaction();
+        Customer customerFirst = session.get(Customer.class, id);
+        System.out.println("Name of " + id + " customer is: " + customerFirst.getName());
+        System.out.println("Products: ");
+        for (Product pr : customerFirst.getProducts()) {
+            System.out.println(pr.getTitle());
+        }
+        session.getTransaction().commit();
     }
 
 }

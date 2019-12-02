@@ -71,7 +71,7 @@ public class Product {
         return String.format("Product [id = %d, title = %s, cost = %d]", id, title, cost);
     }
 
-    public static String  deleteProductFromDB (int id) {
+    public static String  deleteProductFromDB (Long id) {
         return "DELETE FROM Product  WHERE id ="+ id;
     }
 }

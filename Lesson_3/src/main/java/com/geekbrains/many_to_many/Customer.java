@@ -59,7 +59,7 @@ public class Customer {
         return String.format("Customer [id = %d, name = %s]", id, name);
     }
 
-    public static String  deleteCustomerFromDB (int id) {
+    public static String  deleteCustomerFromDB (Long id) {
         return "DELETE FROM Customer  WHERE id ="+ id;
     }
 }
