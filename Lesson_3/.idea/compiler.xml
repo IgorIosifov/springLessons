@@ -6,16 +6,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Lesson_3" />
+        <module name="hibernate-app" />
       </profile>
     </annotationProcessing>
-    <bytecodeTargetLevel>
-      <module name="Homework" target="1.8" />
-      <module name="Lesson1" target="1.8" />
-      <module name="Lesson_1" target="1.8" />
-
-      <module name="Lesson_3" target="1.8" />
-
-    </bytecodeTargetLevel>
   </component>
 </project>

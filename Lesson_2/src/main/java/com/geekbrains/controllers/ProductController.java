@@ -1,14 +1,14 @@
 package com.geekbrains.controllers;
 
-import com.geekbrains.entities.Product;
-import com.geekbrains.services.ProductService;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+        import com.geekbrains.entities.Product;
+        import com.geekbrains.services.ProductService;
+        import org.springframework.beans.factory.annotation.Autowired;
+        import org.springframework.stereotype.Controller;
+        import org.springframework.ui.Model;
+        import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
-import java.util.List;
+        import java.util.Arrays;
+        import java.util.List;
 
 
 // http://localhost:8189/app/products/...
@@ -40,7 +40,6 @@ public class ProductController {
 
     // http://localhost:8189/app/products/info/1
     @RequestMapping(path = "/info/{id}", method = RequestMethod.GET)
-//    @ResponseBody
     public String getProductById(@PathVariable Long id, Model model) {
         Product productById = productService.findById(id).get();
         model.addAttribute(productById);
