@@ -41,11 +41,7 @@ public class ProductController {
     // http://localhost:8189/app/products/info/1
     @RequestMapping(path = "/info/{id}", method = RequestMethod.GET)
     public String getProductById(@PathVariable Long id, Model model) {
-        Product productById = new Product();
-        Long newId = productService.findById(id).get().getId();
-        productById.setId(newId);
-        productById.setTitle(productService.findById(newId).get().getTitle());
-        productById.setPrice(productService.findById(newId).get().getPrice());
+        Product productById = productService.findById(id).get();
         model.addAttribute(productById);
         return "product_form_result";
     }
