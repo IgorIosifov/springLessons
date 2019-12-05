@@ -17,10 +17,10 @@
 <div class="container">
     <h1>Products</h1>
 
-    <form th:action="@{/filter_processing}" method="GET">
+    <form th:action="@{/filteringAndPaging}" method="GET">
 
-        <input type="text" name="filterMin" placeholder="Минимальная цена"/>
-        <input type="text" name="filterMax" placeholder="Максимальная цена"/>
+        <input type="text" name="min_price" placeholder="Минимальная цена"/>
+        <input type="text" name="max_price" placeholder="Максимальная цена"/>
         <input type="submit"/>
     </form>
     <table  class="table table-hover" th:if="${products.size() > 0}">
