@@ -2,6 +2,7 @@ package com.geekbrains.utils;
 
 import com.geekbrains.entites.Product;
 import com.geekbrains.repositories.specifications.ProductSpecifications;
+import com.geekbrains.services.ProductService;
 import lombok.Getter;
 import org.springframework.data.jpa.domain.Specification;
 
@@ -24,6 +25,11 @@ public class ProductFilter {
             int maxPrice = Integer.parseInt(map.get("max_price"));
             spec = spec.and(ProductSpecifications.priceLEThan(maxPrice));
             filterDefinition.append("&max_price=").append(maxPrice);
+        }
+        if (map.containsKey("category") && !map.get("max_price").isEmpty()&& !map.get("min_price").isEmpty()) {
+            Long category =Long.parseLong(map.get("category"));
+            spec = spec.and(ProductSpecifications.categoryEQ(category));
+            filterDefinition.append("&category=").append(category);
         }
     }
 }
