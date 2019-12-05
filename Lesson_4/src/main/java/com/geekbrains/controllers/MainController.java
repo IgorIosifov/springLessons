@@ -63,19 +63,4 @@ public class MainController {
         model.addAttribute("productsCount", page.getTotalElements());
         return "list";
     }
-
-    @GetMapping("/filter_processing")
-    public String processForm(Model model,
-                              @RequestParam(name = "filterMin") String filterMin,
-                              @RequestParam(name = "filterMax") String filterMax
-                              ) {
-        if (filterMin.equals("")) {
-            return "redirect:/filteringAndPaging?max_price=" + parseInt(filterMax);
-        } else if (filterMax.equals("")) {
-            return "redirect:/filteringAndPaging?min_price=" + parseInt(filterMin);
-        } else {
-            return "redirect:/filteringAndPaging?min_price=" + parseInt(filterMin) + "&max_price=" + parseInt(filterMax);
-        }
-    }
-
 }
