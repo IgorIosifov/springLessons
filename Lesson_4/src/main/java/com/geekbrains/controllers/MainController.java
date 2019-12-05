@@ -1,35 +1,42 @@
 package com.geekbrains.controllers;
 
-import com.geekbrains.entities.Item;
-import com.geekbrains.repositories.ItemRepository;
-import com.geekbrains.repositories.ItemSpecifications;
+import com.geekbrains.entities.Product;
+import com.geekbrains.repositories.ProductSpecifications;
+import com.geekbrains.services.ProductService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+
+import static java.lang.Integer.parseInt;
 
 @Controller
 public class MainController {
-    @Autowired
-    private ItemRepository itemRepository;
 
-    @GetMapping("/")
-    public String index() {
-        return "index";
+    private ProductService productService;
+
+    @Autowired
+    public void setProductService(ProductService productService) {
+        this.productService = productService;
     }
 
-    @GetMapping("/items")
+    @GetMapping("/")
     @ResponseBody
-    public List<Item> getAllItems() {
-        return itemRepository.findAll();
+    public List<Product> index() {
+        return productService.getAllItems();
+    }
+
+    @GetMapping("/products")
+    @ResponseBody
+    public List<Product> getAllItems() {
+        return productService.getAllItems();
     }
 
     @GetMapping("/filteringAndPaging")
@@ -38,21 +45,37 @@ public class MainController {
                                 @RequestParam(required = false, name = "max_price") Integer maxPrice,
                                 @RequestParam(required = false, name = "word") String word
     ) {
-        Specification<Item> spec = Specification.where(null);
+        Specification<Product> spec = Specification.where(null);
         if (minPrice != null) {
-            spec = spec.and(ItemSpecifications.priceGreaterThanOrEq(minPrice));
+            spec = spec.and(ProductSpecifications.priceGreaterThanOrEq(minPrice));
         }
         if (maxPrice != null) {
-            spec = spec.and(ItemSpecifications.priceLesserThanOrEq(maxPrice));
+            spec = spec.and(ProductSpecifications.priceLesserThanOrEq(maxPrice));
         }
         if (word != null) {
-            spec = spec.and(ItemSpecifications.titleContains(word));
+            spec = spec.and(ProductSpecifications.titleContains(word));
         }
-        Page<Item> page = itemRepository.findAll(spec, PageRequest.of(0, 5, Sort.Direction.ASC, "price"));
-        model.addAttribute("items", page.getContent());
-        model.addAttribute("itemsCount", page.getTotalElements());
+
+        Page<Product> page = productService.getAllItemsWithPaginationAndSorting(spec, 0, 5, Sort.Direction.ASC, "title");
+
+
+        model.addAttribute("products", page.getContent());
+        model.addAttribute("productsCount", page.getTotalElements());
         return "list";
     }
 
+    @GetMapping("/filter_processing")
+    public String processForm(Model model,
+                              @RequestParam(name = "filterMin") String filterMin,
+                              @RequestParam(name = "filterMax") String filterMax
+                              ) {
+        if (filterMin.equals("")) {
+            return "redirect:/filteringAndPaging?max_price=" + parseInt(filterMax);
+        } else if (filterMax.equals("")) {
+            return "redirect:/filteringAndPaging?min_price=" + parseInt(filterMin);
+        } else {
+            return "redirect:/filteringAndPaging?min_price=" + parseInt(filterMin) + "&max_price=" + parseInt(filterMax);
+        }
+    }
 
 }

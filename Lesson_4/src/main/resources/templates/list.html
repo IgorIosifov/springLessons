@@ -15,8 +15,15 @@
 <body>
 
 <div class="container">
-    <h1>Items</h1>
-    <table  class="table table-hover" th:if="${items.size() > 0}">
+    <h1>Products</h1>
+
+    <form th:action="@{/filter_processing}" method="GET">
+
+        <input type="text" name="filterMin" placeholder="Минимальная цена"/>
+        <input type="text" name="filterMax" placeholder="Максимальная цена"/>
+        <input type="submit"/>
+    </form>
+    <table  class="table table-hover" th:if="${products.size() > 0}">
         <thead>
         <tr>
             <td>id</td>
@@ -25,15 +32,15 @@
         </tr>
         </thead>
         <tbody>
-        <tr th:each="i : ${items}">
-            <td th:text="${i.id}" />
-            <td th:text="${i.title}" />
-            <td th:text="${i.price}" />
+        <tr th:each="i : ${products}">
+            <td th:text="${i.id}"></td>
+            <td th:text="${i.title}"></td>
+            <td th:text="${i.cost}"></td>
         </tr>
         </tbody>
     </table>
     <br>
-    <span th:text="'Total items count (filtered): ' + ${itemsCount}" />
+    <span th:text="'Total items count (filtered): ' + ${productsCount}"></span>
 </div>
 </body>
 </html>
