@@ -22,16 +22,33 @@
                    placeholder="Минимальная цена"/>
             <input class="form-control" th:value="${param.max_price}" name="max_price" type="number"
                    placeholder="Максимальная цена"/>
-                        <select name="category">
-                            <option th:text="'Не выбрана'" th:value="null"/>
-                            <option th:each="c : ${categories}" th:text="${c.title}" th:selected="${c == param.category}" th:value="${param.category}"/>
-                        </select>
+            <select name="category">
+                <option th:text="'Не выбрана'" th:value="null"/>
+                <option th:each="c : ${categories}" th:text="${c.title}" th:selected="${c == param.category}" th:value="${c.getId()}"/>
+            </select>
+
+            <select name="direction">
+                <option th:each="dir : ${direction}" th:text="${dir}" th:selected="${dir == param.direction}" th:value="${dir}"/>
+            </select>
         </div>
         <br>
         <button type="submit" class="btn btn-warning">Фильтровать</button>
         <a class="btn btn-warning" th:href="@{'/?p=1'}">Сбросить фильтр</a>
+
+
     </form>
-    <br>
+
+<!--    <form th:action="@{/}" method="GET">-->
+
+<!--        <button type="submit" class="btn btn-success" th:value="ASC" name = "direction" th:type="text">По возрастанию цены</button>-->
+
+<!--    </form>-->
+
+<!--    <form th:action="@{/}" method="GET">-->
+
+<!--        <button type="submit" class="btn btn-danger" th:value="DESC" name = "direction" th:type="text">По убыванию цены</button>-->
+
+<!--    </form>-->
     <h3>Каталог товаров</h3>
     <table class="table table-hover">
         <thead class="thead-dark">
