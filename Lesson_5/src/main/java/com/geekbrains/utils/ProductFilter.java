@@ -25,5 +25,14 @@ public class ProductFilter {
             spec = spec.and(ProductSpecifications.priceLEThan(maxPrice));
             filterDefinition.append("&max_price=").append(maxPrice);
         }
+        if (map.containsKey("category") && !map.get("category").isEmpty()) {
+            Long category = Long.parseLong(map.get("category"));
+            spec = spec.and(ProductSpecifications.categoryEQ(category));
+            filterDefinition.append("&category=").append(category);
+        }
+        if (map.containsKey("direction") && !map.get("direction").isEmpty()) {
+            String direction = map.get("direction");
+            filterDefinition.append("&direction=").append(direction);
+        }
     }
 }
