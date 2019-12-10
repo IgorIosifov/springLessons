@@ -20,11 +20,13 @@ import java.util.Map;
 public class MarketController {
     private ItemService itemService;
     private CategoryService categoryService;
+    private Cart cart;
 
     @Autowired
-    public MarketController(ItemService itemService, CategoryService categoryService) {
+    public MarketController(ItemService itemService, CategoryService categoryService, Cart cart) {
         this.itemService = itemService;
         this.categoryService = categoryService;
+        this.cart = cart;
     }
 
     @GetMapping("/")
@@ -41,6 +43,7 @@ public class MarketController {
         model.addAttribute("filtersDef", itemFilter.getFilterDefinition());
         model.addAttribute("categories", categories);
         model.addAttribute("page", page);
+
         return "index";
     }
 
@@ -58,4 +61,18 @@ public class MarketController {
         itemService.save(item);
         return "redirect:/";
     }
-}
+
+    @GetMapping("/addToCart/{id}")
+    public String addToCart(Model model, @PathVariable Long id) {
+        model.addAttribute("id", id);
+        cart.addToCart(id);
+        return "redirect:/";
+    }
+
+    @GetMapping ("/cart")
+    public String cart(Model model) {
+        model.addAttribute("cart", cart);
+        model.addAttribute("Items", cart.allItemsInCart());
+        return "cart";
+    }
+    }
