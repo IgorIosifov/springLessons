@@ -29,12 +29,11 @@ public class Cart {
     public void addToCart(Long id) {
 
         Item itemById = itemService.findById(id);
-        int quantity = getItemFromMap(itemById);
+        int quantity = cart.getOrDefault(itemById,0);
         if (quantity == 0) {
             cart.put(itemById, ++quantity);
         } else {
-            removeItem(itemById);
-            cart.put(itemById, ++quantity);
+            cart.replace(itemById, ++quantity);
         }
 
     }
@@ -43,29 +42,16 @@ public class Cart {
         return cart.keySet();
     }
 
-    public int getItemFromMap(Item item) {
-        for (Item it : cart.keySet()) {
-            if (it.getId().equals(item.getId())) {
-                return cart.get(it);
-            }
-        }
-        return 0;
-    }
-
-    public void removeItem(Item item) {
-        for (Item it : cart.keySet()) {
-            if (it.getId().equals(item.getId())) {
-                cart.remove(it);
-            }
-        }
-    }
-
     public int totalCost() {
         int totalCost = 0;
         for (Item item : cart.keySet()) {
-            totalCost += item.getPrice() * getItemFromMap(item);
+            totalCost += item.getPrice() * cart.getOrDefault(item,0);
         }
         return totalCost;
+    }
+    public Integer get(Item item ){
+        return cart.getOrDefault(item,0);
+
     }
 }
 
