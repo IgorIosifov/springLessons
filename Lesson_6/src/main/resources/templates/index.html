@@ -31,9 +31,12 @@
         <br>
         <button type="submit" class="btn btn-warning">Применить</button>
         <a class="btn btn-warning" th:href="@{'/?p=1'}">Сбросить</a>
+        <a class="btn btn-success" th:href="@{'/cart'}">Корзина</a>
     </form>
     <br>
     <h3>Каталог товаров</h3>
+<!--    ="@{/edit}" th:object="${item}"-->
+
     <table class="table table-hover">
         <thead class="thead-dark">
         <tr>
@@ -41,6 +44,7 @@
             <th>Описание товара</th>
             <th>Цена</th>
             <th>Действия</th>
+            <th>В корзину</th>
         </tr>
         </thead>
         <tbody>
@@ -56,6 +60,11 @@
             <td th:text="${item.price}"/>
             <td>
                 <a th:href="@{'/edit/' + ${item.id}}" class="btn btn-warning">Edit</a>
+            </td>
+
+            <td>
+<!--                <input th:field="*{id}" type="hidden" class="form-control">-->
+                <a th:href="@{'/addToCart/' + ${item.id}}" class="btn btn-success">В корзину</a>
             </td>
         </tr>
         </tbody>
