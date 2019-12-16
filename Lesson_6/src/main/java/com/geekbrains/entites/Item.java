@@ -1,5 +1,8 @@
 package com.geekbrains.entites;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -9,6 +12,7 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "items")
+
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -17,6 +21,7 @@ public class Item {
 
     @ManyToOne
     @JoinColumn(name = "category_id")
+    @JsonBackReference
     private Category category;
 
     @Column(name = "title")
@@ -42,4 +47,6 @@ public class Item {
     public int hashCode() {
         return id.hashCode();
     }
+
+
 }
