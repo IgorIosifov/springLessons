@@ -1,23 +1,40 @@
 package com.geekbrains.entites;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+import lombok.NoArgsConstructor;
+import lombok.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
+import javax.validation.constraints.Pattern;
 import java.util.List;
 
 @Entity
 @Table(name = "categories")
-//@NoArgsConstructor
+@NoArgsConstructor
 //@Data
+
 public class Category {
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
+
     private Long id;
+
 
     @Column(name = "title")
     private String title;
 
     @OneToMany(mappedBy = "category")
+    @JsonManagedReference
     private List<Item> items;
+
+    public Category(Long id) {
+        this.id = id;
+    }
 
     public Long getId() {
         return id;
